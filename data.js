@@ -1,23 +1,323 @@
 'use strict';
 window.DEMO={
-  periods:[{id:'fy25',name:'FY2025 · 2024.04—2025.03',short:'2024.04 — 2025.03',updated:'2025.05.20',months:['4月','5月','6月','7月','8月','9月','10月','11月','12月','1月','2月','3月']},{id:'fy26',name:'FY2026 · 2025.04—2026.03',short:'2025.04 — 2026.03',updated:'2026.04.20',months:['4月','5月','6月','7月','8月','9月','10月','11月','12月','1月','2月','3月']}],
-  customers:{
-    anta:{name:'安踏集团',en:'ANTA GROUP',mark:'ANTA',className:'anta',description:'多品牌体育用品集团 · 运动与户外',owner:'华东 KA 团队',health:76,sales:28,category:35,launches:42,penetration:6.8,opportunity:[12,18],pipeline:6.2,coverage:2.3,
-      series:[102,106,114,117,134,122,146,145,166,153,168,190],industry:[100,102,108,110,119,113,126,122,133,125,138,148],
-      brands:[{name:'DESCENTE',cn:'迪桑特',mark:'D',growth:46,penetration:12.4,momentum:'高',potential:'高',amount:'4.8—6.2',segment:'高端户外 / 轻量保暖',tech:'Power Air / Alpha',relation:'产品、创新团队已覆盖',signal:'高端户外品类增速领先，具备轻量保暖技术合作空间。'}, {name:'KOLON SPORT',cn:'可隆',mark:'K',growth:39,penetration:3.2,momentum:'高',potential:'高',amount:'3.2—5.0',segment:'专业户外 / 防风防护',tech:'NeoShell / Power Shield',relation:'产品团队活跃，采购待深化',signal:'品牌增长与当前技术渗透形成缺口，优先验证防护场景。'},{name:'ANTA',cn:'安踏',mark:'A',growth:18,penetration:8.1,momentum:'中',potential:'中',amount:'2.4—3.8',segment:'跑步训练 / 日常运动',tech:'Power Dry / Delta',relation:'产品、采购保持常态沟通',signal:'主品牌体量较大，适合从重点系列开展技术应用试点。'},{name:'FILA',cn:'斐乐',mark:'F',growth:12,penetration:2.7,momentum:'中',potential:'中',amount:'1.6—3.0',segment:'运动生活 / 城市户外',tech:'Power Stretch / Thermal Pro',relation:'品牌营销触点待补齐',signal:'关注舒适与城市户外需求，先验证品牌合作意向。'}],
-      insights:[['增长动能','户外与高端品牌领跑，优先投入迪桑特、可隆。'],['技术空白','抓绒中层已有基础，轻量保暖与防护仍有空间。'],['经营重点','先进入产品与创新团队，再推动联合开发。']],
-      risks:[['竞争加剧','中层与保暖领域竞品投入增加。','高'],['价格敏感','主流运动系列对材料成本较为敏感。','中'],['供应波动','原材料与交期波动可能影响开发节奏。','中'],['消费变化','宏观不确定性影响非刚需消费。','中']]
-    },
-    lining:{name:'李宁集团',en:'LI-NING GROUP',mark:'LI-NING',className:'lining',description:'专业运动与运动生活集团 · 演示客户',owner:'华北 KA 团队',health:71,sales:21,category:29,launches:31,penetration:5.2,opportunity:[8,12],pipeline:4.1,coverage:1.8,series:[100,104,109,115,119,113,127,132,143,138,150,161],industry:[100,102,108,110,119,113,126,122,133,125,138,148],brands:[{name:'LI-NING',cn:'李宁',mark:'L',growth:24,penetration:7.6,momentum:'高',potential:'高',amount:'3.0—4.4',segment:'跑步 / 训练',tech:'Power Dry / Delta',relation:'产品团队活跃',signal:'专业运动系列的功能性材料需求值得验证。'},{name:'CHINA LI-NING',cn:'中国李宁',mark:'C',growth:17,penetration:3.1,momentum:'中',potential:'高',amount:'2.2—3.4',segment:'运动生活 / 城市户外',tech:'Power Stretch',relation:'品牌团队已有触点',signal:'以舒适与城市户外系列试点合作。'},{name:'LNG',cn:'LNG',mark:'G',growth:14,penetration:2.3,momentum:'中',potential:'中',amount:'1.4—2.2',segment:'年轻运动 / 户外',tech:'Thermal Pro',relation:'创新团队待覆盖',signal:'先补齐品牌需求访谈，再评估合作空间。'},{name:'AIGLE',cn:'艾高（合作业务）',mark:'A',growth:21,penetration:4.4,momentum:'高',potential:'中',amount:'1.4—2.0',segment:'户外生活',tech:'Power Shield',relation:'产品团队已有触点',signal:'关注季节性防护需求，验证联合开发可行性。'}],insights:[['增长动能','跑步与训练系列带动功能面料需求。'],['技术空白','吸湿排汗基础上，拓展城市户外应用。'],['经营重点','商机覆盖低于演示目标，优先补充早期机会。']],risks:[['商机覆盖','覆盖倍数低于演示目标 2.0×。','高'],['开发周期','新品开发窗口需提前对齐。','中'],['价格敏感','主流运动系列关注材料成本。','中'],['需求验证','新场景尚需样品与穿着测试支持。','中']]},
-    bosideng:{name:'波司登集团',en:'BOSIDENG GROUP',mark:'BOSIDENG',className:'bosideng',description:'羽绒服与功能服饰集团 · 演示客户',owner:'华东 KA 团队',health:82,sales:34,category:31,launches:38,penetration:9.4,opportunity:[10,15],pipeline:5.4,coverage:2.6,series:[100,103,105,110,120,139,151,175,194,182,171,174],industry:[100,102,108,110,119,113,126,122,133,125,138,148],brands:[{name:'BOSIDENG',cn:'波司登',mark:'B',growth:34,penetration:13.2,momentum:'高',potential:'高',amount:'4.2—6.0',segment:'高端羽绒 / 轻量保暖',tech:'Alpha / Power Air',relation:'产品、采购团队活跃',signal:'以轻量保暖与复合防护验证新增应用。'},{name:'SNOW FLYING',cn:'雪中飞',mark:'S',growth:29,penetration:5.1,momentum:'高',potential:'高',amount:'2.8—4.2',segment:'年轻户外 / 功能服饰',tech:'Thermal Pro',relation:'产品团队活跃',signal:'户外场景拓展与品牌增长形成机会。'},{name:'BENGEN',cn:'冰洁',mark:'B',growth:13,penetration:3.2,momentum:'中',potential:'中',amount:'1.6—2.4',segment:'日常保暖',tech:'Power Stretch',relation:'采购已有触点',signal:'先从重点系列开展成本与性能验证。'},{name:'BOSIDENG OUTDOOR',cn:'户外系列',mark:'O',growth:26,penetration:6.3,momentum:'高',potential:'中',amount:'1.4—2.4',segment:'户外防护',tech:'Power Shield',relation:'创新团队待深化',signal:'优先验证防风透湿材料的季节性合作。'}],insights:[['增长动能','高端保暖与户外系列带动新应用。'],['技术空白','已有保暖优势，可拓展透湿与防护场景。'],['经营重点','把早期材料测试转为可追踪的开发项目。']],risks:[['季节集中','订单与开发节奏受秋冬旺季影响。','高'],['供应波动','旺季产能与交期需前置协同。','中'],['竞争压力','高端保暖材料竞争持续。','中'],['需求变化','天气与消费偏好影响终端需求。','中']]}
+  "periods": [
+    {
+      "id": "fy25",
+      "name": "FY2025 · 2024.04—2025.03",
+      "short": "2024.04 — 2025.03",
+      "updated": "2025.05.20",
+      "months": [
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月",
+        "1月",
+        "2月",
+        "3月"
+      ]
+    }
+  ],
+  "customers": {
+    "anta": {
+      "name": "安踏集团",
+      "en": "ANTA GROUP",
+      "mark": "ANTA",
+      "className": "anta",
+      "description": "多品牌体育用品集团 · 运动与户外",
+      "owner": "待客户指定",
+      "health": 76,
+      "sales": 28,
+      "category": 35,
+      "launches": 42,
+      "penetration": 6.8,
+      "opportunity": [
+        12,
+        18
+      ],
+      "pipeline": 6.2,
+      "coverage": 2.3,
+      "series": [
+        100,
+        106,
+        114,
+        117,
+        134,
+        122,
+        146,
+        145,
+        166,
+        153,
+        168,
+        190
+      ],
+      "industry": [
+        100,
+        102,
+        108,
+        110,
+        119,
+        113,
+        126,
+        122,
+        133,
+        125,
+        138,
+        148
+      ],
+      "brands": [
+        {
+          "name": "DESCENTE",
+          "cn": "迪桑特",
+          "mark": "D",
+          "momentum": "高",
+          "potential": "高",
+          "segment": "高端户外 / 轻量保暖",
+          "tech": "待结合产品规格确认",
+          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
+          "signal": "高端户外品类增速领先，具备轻量保暖技术合作空间。",
+          "penetrationLevel": "中"
+        },
+        {
+          "name": "KOLON SPORT",
+          "cn": "可隆",
+          "mark": "K",
+          "momentum": "高",
+          "potential": "高",
+          "segment": "专业户外 / 防风防护",
+          "tech": "待结合产品规格确认",
+          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
+          "signal": "品牌增长与当前技术渗透形成缺口，优先验证防护场景。",
+          "penetrationLevel": "低"
+        },
+        {
+          "name": "ANTA",
+          "cn": "安踏",
+          "mark": "A",
+          "momentum": "中",
+          "potential": "中",
+          "segment": "跑步训练 / 日常运动",
+          "tech": "待结合产品规格确认",
+          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
+          "signal": "主品牌体量较大，适合从重点系列开展技术应用试点。",
+          "penetrationLevel": "中"
+        },
+        {
+          "name": "FILA",
+          "cn": "斐乐",
+          "mark": "F",
+          "momentum": "中",
+          "potential": "中",
+          "segment": "运动生活 / 城市户外",
+          "tech": "待结合产品规格确认",
+          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
+          "signal": "关注舒适与城市户外需求，先验证品牌合作意向。",
+          "penetrationLevel": "低"
+        }
+      ],
+      "insights": [
+        [
+          "增长动能",
+          "户外与高端品牌的增长快于核心品牌。"
+        ],
+        [
+          "技术卡位",
+          "Polartec在抓绒/中层已有优势，保暖与外壳仍渗透不足。"
+        ],
+        [
+          "优先空白",
+          "轻量保暖与天气防护是下一步重点场景。"
+        ]
+      ],
+      "risks": [
+        [
+          "竞争加剧",
+          "中层与保暖领域竞品投入增加。",
+          "高"
+        ],
+        [
+          "价格敏感",
+          "主流运动系列对材料成本较为敏感。",
+          "中"
+        ],
+        [
+          "供应波动",
+          "原材料与交期波动可能影响开发节奏。",
+          "中"
+        ],
+        [
+          "消费变化",
+          "宏观不确定性影响非刚需消费。",
+          "中"
+        ]
+      ],
+      "healthLabel": "良好"
+    }
   },
-  materials:[{name:'抓绒 / 中层',en:'Fleece / Midlayer',state:'优势巩固',level:'good',pressure:'高',next:'保持技术领先',tech:'Thermal Pro / Power Air',rate:18.6},{name:'轻量保暖',en:'Lightweight Insulation',state:'渗透不足',level:'warn',pressure:'高',next:'优先拓展空白',tech:'Alpha / Alpha Direct',rate:4.2},{name:'防风 / 防护',en:'Shell / Weather',state:'渗透不足',level:'warn',pressure:'高',next:'优先拓展空白',tech:'Power Shield / NeoShell',rate:2.8},{name:'跑步 / 训练',en:'Running / Training',state:'新兴应用',level:'blue',pressure:'中',next:'选择性增长',tech:'Power Dry / Delta',rate:5.1}],
-  metrics:[{key:'health',name:'客户健康度',en:'Overall Account Health',unit:'分',formula:'销售增长 30% + 品类动能 20% + 技术渗透 20% + 关系深度 20% + 消费者信号 10%，各项先标准化至 0–100 分。',source:'评分模型，依赖 ERP、CRM、SKU 监测与舆情数据',status:'模型与权重待确认',note:'演示分数直接使用样图示意值；并非根据当前页面明细实时计算。建议阈值：≥75 良好、60–74 关注、<60 风险。',frequency:'月度 / 待确认'},
-    {key:'sales',name:'我方销售同比',en:'Our Sales Growth',unit:'%',formula:'（本期我方向当前集团销售额 − 上年同期销售额）÷ 上年同期销售额 × 100%。',source:'我方 ERP / 财务订单数据',status:'待接入',note:'需要统一币种、退货、集团内品牌归属与含税口径。基期为 0 时不计算增幅。',frequency:'月度 / 待确认'},
-    {key:'category',name:'相关品类增速',en:'Relevant Category Growth',unit:'%',formula:'（本期目标品类市场规模 − 上年同期市场规模）÷ 上年同期市场规模 × 100%。',source:'行业报告 / 第三方品类监测',status:'需外部数据',note:'这是目标品类市场的增长，不等同于客户整体收入增长；目标品类和可比市场需确认。',frequency:'季度 / 待确认'},
-    {key:'launches',name:'相关新品同比',en:'New Relevant Launches',unit:'%',formula:'（本期相关新品 SKU 数 − 上年同期相关新品 SKU 数）÷ 上年同期相关新品 SKU 数 × 100%。',source:'客户新品清单 / 电商商品监测',status:'待接入',note:'以首发日期计入，需约定 SKU 去重规则、颜色尺码合并规则与目标技术场景。',frequency:'月度 / 待确认'},
-    {key:'penetration',name:'技术渗透率',en:'Technology Penetration',unit:'%',formula:'监测范围内明确提及 Polartec 技术的有效 SKU 数 ÷ 同范围有效 SKU 总数 × 100%。',source:'客户 SKU 主数据 / 商品详情页及吊牌识别',status:'需 SKU 级数据',note:'仅代表监测 SKU 口径，不代表销量份额。样图 6.8% 与品牌明细均为独立示意值，不能直接汇总。',frequency:'月度 / 待确认'},
-    {key:'opportunity',name:'潜在机会估算',en:'High-potential Opportunity',unit:'亿元',formula:'目标场景市场空间 × 材料价值占比 × 可获取比例，按低 / 高情景形成区间。',source:'市场空间模型 + 品类 / 品牌假设',status:'测算模型待确认',note:'是潜在空间的区间测算，并非已确认收入、销售承诺或 CRM 商机金额；样图未明确币种口径，本 Demo 暂按人民币演示。',frequency:'季度 / 待确认'}],
-  roles:[{name:'产品团队',en:'Product',status:'活跃',level:'good',touch:12},{name:'创新团队',en:'Innovation',status:'活跃',level:'good',touch:9},{name:'采购团队',en:'Sourcing',status:'部分覆盖',level:'warn',touch:4},{name:'品牌 / 营销',en:'Brand & Marketing',status:'覆盖不足',level:'risk',touch:1}],
-  actions:[{title:'建立集团级技术机会地图',description:'对齐品牌、场景与现有材料应用，形成优先级。',owner:'KA 负责人',due:'T+7 天',brand:0},{title:'锁定 2—3 个季节性重点品类',description:'确认轻量保暖与防护场景的样品测试清单。',owner:'产品技术团队',due:'T+14 天',brand:1},{title:'进入产品与创新决策链',description:'在开发节点前完成需求访谈与联合技术交流。',owner:'KA + 技术团队',due:'T+21 天',brand:0},{title:'共建联合商业化路线图',description:'明确验证、开发、上市里程碑及双方责任人。',owner:'联合项目组',due:'T+30 天',brand:1}]
+  "materials": [
+    {
+      "name": "抓绒 / 中层",
+      "en": "Fleece / Midlayer",
+      "state": "优势巩固",
+      "level": "good",
+      "pressure": "高",
+      "next": "保持技术领先",
+      "tech": "待产品技术团队确认"
+    },
+    {
+      "name": "轻量保暖",
+      "en": "Lightweight Insulation",
+      "state": "渗透不足",
+      "level": "warn",
+      "pressure": "高",
+      "next": "优先拓展空白",
+      "tech": "待产品技术团队确认"
+    },
+    {
+      "name": "防风 / 防护",
+      "en": "Shell / Weather",
+      "state": "渗透不足",
+      "level": "warn",
+      "pressure": "高",
+      "next": "优先拓展空白",
+      "tech": "待产品技术团队确认"
+    },
+    {
+      "name": "跑步 / 训练",
+      "en": "Running / Training",
+      "state": "新兴应用",
+      "level": "blue",
+      "pressure": "中",
+      "next": "选择性增长",
+      "tech": "待产品技术团队确认"
+    }
+  ],
+  "metrics": [
+    {
+      "key": "health",
+      "name": "客户健康度",
+      "en": "Overall Account Health",
+      "unit": "分",
+      "formula": "综合健康度评分。样图给出 76/100 与 Good；材料没有确认评分权重、标准化方法或分档阈值。",
+      "source": "评分模型，依赖 ERP、CRM、SKU 监测与舆情数据",
+      "status": "模型与权重待确认",
+      "note": "76 分与“良好”直接来自客户样图，不由本 Demo 的其他明细计算。销售增长、品类动能、技术渗透、关系深度、消费者信号只是 MD 中提出的候选维度。",
+      "frequency": "月度 / 待确认"
+    },
+    {
+      "key": "sales",
+      "name": "我方销售同比",
+      "en": "Our Sales Growth",
+      "unit": "%",
+      "formula": "（本期我方向当前集团销售额 − 上年同期销售额）÷ 上年同期销售额 × 100%。",
+      "source": "我方 ERP / 财务订单数据",
+      "status": "待接入",
+      "note": "需要统一币种、退货、集团内品牌归属与含税口径。基期为 0 时不计算增幅。",
+      "frequency": "月度 / 待确认"
+    },
+    {
+      "key": "category",
+      "name": "相关品类增速",
+      "en": "Relevant Category Growth",
+      "unit": "%",
+      "formula": "（本期目标品类市场规模 − 上年同期市场规模）÷ 上年同期市场规模 × 100%。",
+      "source": "行业报告 / 第三方品类监测",
+      "status": "需外部数据",
+      "note": "这是目标品类市场的增长，不等同于客户整体收入增长；目标品类和可比市场需确认。",
+      "frequency": "季度 / 待确认"
+    },
+    {
+      "key": "launches",
+      "name": "相关新品同比",
+      "en": "New Relevant Launches",
+      "unit": "%",
+      "formula": "（本期相关新品 SKU 数 − 上年同期相关新品 SKU 数）÷ 上年同期相关新品 SKU 数 × 100%。",
+      "source": "客户新品清单 / 电商商品监测",
+      "status": "待接入",
+      "note": "以首发日期计入，需约定 SKU 去重规则、颜色尺码合并规则与目标技术场景。",
+      "frequency": "月度 / 待确认"
+    },
+    {
+      "key": "penetration",
+      "name": "技术渗透率",
+      "en": "Technology Penetration",
+      "unit": "%",
+      "formula": "监测范围内明确提及 Polartec 技术的有效 SKU 数 ÷ 同范围有效 SKU 总数 × 100%。",
+      "source": "客户 SKU 主数据 / 商品详情页及吊牌识别",
+      "status": "需 SKU 级数据",
+      "note": "集团 6.8% 为样图示意；品牌地图按原图显示“中/低”。品牌及场景的精确分子分母未提供，不能自拟百分比或据此汇总。",
+      "frequency": "月度 / 待确认"
+    },
+    {
+      "key": "opportunity",
+      "name": "潜在机会估算",
+      "en": "High-potential Opportunity",
+      "unit": "亿元",
+      "formula": "目标场景市场空间 × 材料价值占比 × 可获取比例，按低 / 高情景形成区间。",
+      "source": "市场空间模型 + 品类 / 品牌假设",
+      "status": "测算模型待确认",
+      "note": "是潜在空间的区间测算，并非已确认收入、销售承诺或 CRM 商机金额；样图未明确币种口径，本 Demo 暂按人民币演示。",
+      "frequency": "季度 / 待确认"
+    }
+  ],
+  "roles": [
+    {
+      "name": "产品团队",
+      "en": "Product",
+      "status": "活跃",
+      "level": "good"
+    },
+    {
+      "name": "创新团队",
+      "en": "Innovation",
+      "status": "活跃",
+      "level": "good"
+    },
+    {
+      "name": "采购团队",
+      "en": "Sourcing",
+      "status": "部分覆盖",
+      "level": "warn"
+    },
+    {
+      "name": "品牌 / 营销",
+      "en": "Brand & Marketing",
+      "status": "覆盖不足",
+      "level": "risk"
+    }
+  ],
+  "actions": [
+    {
+      "title": "建立集团级技术机会地图",
+      "description": "对齐品牌、场景与现有材料应用，形成优先级。",
+      "owner": "KA 负责人",
+      "due": "T+7 天",
+      "brand": 0
+    },
+    {
+      "title": "锁定 2—3 个季节性重点品类",
+      "description": "确认轻量保暖与防护场景的样品测试清单。",
+      "owner": "产品技术团队",
+      "due": "T+14 天",
+      "brand": 1
+    },
+    {
+      "title": "进入产品与创新决策链",
+      "description": "在开发节点前完成需求访谈与联合技术交流。",
+      "owner": "KA + 技术团队",
+      "due": "T+21 天",
+      "brand": 0
+    },
+    {
+      "title": "共建联合商业化路线图",
+      "description": "明确验证、开发、上市里程碑及双方责任人。",
+      "owner": "联合项目组",
+      "due": "T+30 天",
+      "brand": 1
+    }
+  ]
 };
