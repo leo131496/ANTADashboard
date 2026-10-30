@@ -32,10 +32,10 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('change',async e=>{
  if(e.target.matches('[data-commerce-filter]')){state[e.target.dataset.commerceFilter]=e.target.value;render(true);}
- if(e.target.matches('[data-calc-filter]')){state[e.target.dataset.calcFilter]=e.target.value;render(true);}
+ if(e.target.matches('[data-calc-filter]')){const key=e.target.dataset.calcFilter;if(key==='calcUnit')state.calc=D.convertAssumptions(state.calcUnit,e.target.value,state.calc);state[key]=e.target.value;render(true);}
  if(e.target.id==='data-file'){const file=e.target.files[0];if(!file)return;const snapshot=state.customer+state.period+state.importType;try{if(file.size>5*1024*1024)throw Error('请上传5MB以内的Excel或CSV文件。');const grid=/\.xlsx$/i.test(file.name)?await parseXLSX(file):/\.csv$/i.test(file.name)?parseCSV(await file.text()):(()=>{throw Error('请选择.xlsx或.csv文件。');})();if(snapshot!==state.customer+state.period+state.importType)throw Error('当前数据类型已变化，请重新选择。');validateImport(grid,file.name);}catch(error){state.importPreview=null;const el=$('#import-preview');if(el)el.innerHTML=`<div class="import-errors">${esc(error.message)}</div>`;}}
 });
-document.addEventListener('input',e=>{if(!e.target.matches('[data-assumption]'))return;const el=$('#calculation-results'),inputs=$$('[data-assumption]');if(inputs.some(input=>input.value===''||!input.validity.valid)){if(el)el.innerHTML='<div class="import-errors">请填写范围内的完整测算假设；当前不沿用上一次结果。</div>';return;}inputs.forEach(input=>state.calc[input.dataset.assumption]=Number(input.value));if(el)el.innerHTML=calculateMarkup(alignedData());});
+document.addEventListener('input',e=>{if(!e.target.matches('[data-assumption]'))return;const el=$('#calculation-results'),inputs=$$('[data-assumption]');inputs.forEach(input=>state.calc[input.dataset.assumption]=input.value!==''&&input.validity.valid?Number(input.value):null);if(inputs.some(input=>input.value===''||!input.validity.valid)){if(el)el.innerHTML='<div class="import-errors">请填写范围内的完整测算假设；当前不沿用上一次结果。</div>';return;}if(el)el.innerHTML=calculateMarkup(alignedData());});
 $('#nav').addEventListener('click',e=>{if(e.target.closest('a')){document.body.classList.remove('mobile-menu');$('#mobile-nav-toggle').setAttribute('aria-expanded','false');}});
 $('#mobile-nav-toggle').addEventListener('click',()=>{const open=document.body.classList.toggle('mobile-menu');$('#mobile-nav-toggle').setAttribute('aria-expanded',String(open));});
 if(pages[location.hash.slice(1)])state.page=location.hash.slice(1);

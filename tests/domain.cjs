@@ -30,6 +30,17 @@ const partial=D.align(appended,ins,'DESCENTE','轻量保暖','保暖技术（演
 const aligned=D.align(appended,D.merge('internal',ins,ir),'DESCENTE','轻量保暖','保暖技术（演示）');assert.equal(aligned.months.length,12);
 assert.equal(D.materialUnits([{units:10,unit:'米'},{units:10,unit:'码'}],'米').value,19.144);
 assert.equal(D.materialUnits([{units:10,unit:'千克'}],'米').value,null);
+const metreDrivers={ratio:60,use:1.5,win:20,price:60},yardDrivers=D.convertAssumptions('米','码',metreDrivers);
+const metreRevenue=D.opportunity({pieces:100,internal:10,...metreDrivers}).revenue;
+const yardRevenue=D.opportunity({pieces:100,internal:10/.9144,...yardDrivers}).revenue;
+assert(Math.abs(yardRevenue-metreRevenue)<1e-8,'Changing length display units must preserve the physical opportunity value');
+const returnedDrivers=D.convertAssumptions('码','米',yardDrivers);
+assert(Math.abs(returnedDrivers.use-metreDrivers.use)<1e-12);
+assert(Math.abs(returnedDrivers.price-metreDrivers.price)<1e-12);
+assert.equal(D.convertAssumptions('米','千克',metreDrivers).use,null);
+assert.equal(D.convertAssumptions('米','千克',metreDrivers).price,null);
+assert.equal(D.opportunity({pieces:100,internal:10,...D.convertAssumptions('米','千克',metreDrivers)}),null);
+assert.equal(D.opportunity({pieces:1e300,internal:0,ratio:100,use:1e100,win:100,price:60}),null);
 assert.deepEqual(D.opportunity({pieces:100,internal:10,ratio:60,use:1.5,win:20,price:60}),{demand:90,gap:80,revenue:960});
 assert.equal(D.opportunity({pieces:100,internal:10,ratio:0,use:1.5,win:20,price:60}).revenue,0);
 assert.equal(D.opportunity({pieces:100,internal:1000,ratio:60,use:1.5,win:20,price:60}).gap,0);
@@ -39,4 +50,8 @@ const demo=JSON.parse(JSON.stringify(context.window.DEMO)),anta=demo.customers.a
 assert.deepEqual(Object.keys(demo.customers),['anta']);assert.deepEqual(demo.periods.map(p=>p.id),['fy25']);
 assert.deepEqual([anta.health,anta.sales,anta.category,anta.launches,anta.penetration,anta.opportunity,anta.pipeline,anta.coverage],[76,28,35,42,6.8,[12,18],6.2,2.3]);
 assert.deepEqual(anta.brands.map(b=>b.penetrationLevel),['中','低','中','低']);assert(!anta.brands.some(b=>'penetration' in b||'growth' in b||'amount' in b));
-console.log('PASS: source values, scope boundaries, 6 platforms/4 scenarios, 3 import types, whole-scope replacement, duplicate rejection, incremental months, aligned periods, unit conversion, and opportunity boundaries.');
+assert.equal(anta.trendBasis.kind,'image_approximation');assert.equal(anta.trendBasis.originalDataProvided,false);
+assert.equal(anta.trendBasis.unit,'待客户确认');assert.equal(anta.series.length,12);assert.equal(anta.industry.length,12);
+assert.deepEqual(demo.materials.map(m=>m.en),['Fleece / Midlayer','Insulation','Shell / Weather','Running / Training']);
+assert.equal(demo.materials[1].name,'保暖');assert(!anta.brands.some(b=>'segment' in b));
+console.log('PASS: source values and terminology, explicit approximate chart provenance, import boundaries, month alignment, unit/value invariance, and opportunity boundaries.');

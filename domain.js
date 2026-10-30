@@ -44,7 +44,14 @@
   }
   function align(external,internal,brand,category,technology){const ext=external.filter(r=>r.brand===brand&&r.category===category),all=internal.filter(r=>r.brand===brand&&r.category===category),ins=all.filter(r=>!technology||r.technology===technology),em=new Set(ext.map(r=>r.month)),im=new Set(ins.map(r=>r.month)),common=months.filter(m=>em.has(m)&&im.has(m));return {external:ext.filter(r=>common.includes(r.month)),internal:ins.filter(r=>common.includes(r.month)),months:common,missing:months.filter(m=>em.has(m)!==im.has(m))};}
   function materialUnits(rows,unit){let total=0;const incompatible=[];rows.forEach(r=>{if(r.unit===unit)total+=r.units;else if(r.unit==='码'&&unit==='米')total+=r.units*.9144;else if(r.unit==='米'&&unit==='码')total+=r.units/.9144;else incompatible.push(r);});return {value:incompatible.length?null:total,incompatible};}
-  function opportunity(input){const {pieces,internal,ratio,use,win,price}=input;if([pieces,internal,ratio,use,win,price].some(v=>v===null||!Number.isFinite(v)||v<0)||ratio>100||win>100)return null;const demand=pieces*ratio/100*use,gap=Math.max(demand-internal,0);return {demand,gap,revenue:gap*win/100*price};}
-  const api={brands,platforms,categories,bands,months,newsTypes,headers,scope,key,merge,externalFixture,internalFixture,sum,dateValue,validURL,validate,align,materialUnits,opportunity};
+  function convertAssumptions(from,to,drivers){
+    if(from===to)return {...drivers};
+    if(!['米','码'].includes(from)||!['米','码'].includes(to))return {...drivers,use:null,price:null};
+    const factor=(from==='米'?1:.9144)/(to==='米'?1:.9144);
+    const use=Number.isFinite(drivers.use)?drivers.use*factor:null,price=Number.isFinite(drivers.price)?drivers.price/factor:null;
+    return {...drivers,use:Number.isFinite(use)?use:null,price:Number.isFinite(price)?price:null};
+  }
+  function opportunity(input){const {pieces,internal,ratio,use,win,price}=input;if([pieces,internal,ratio,use,win,price].some(v=>v===null||!Number.isFinite(v)||v<0)||ratio>100||win>100)return null;const demand=pieces*ratio/100*use,gap=Math.max(demand-internal,0),revenue=gap*win/100*price;return [demand,gap,revenue].every(Number.isFinite)?{demand,gap,revenue}:null;}
+  const api={brands,platforms,categories,bands,months,newsTypes,headers,scope,key,merge,externalFixture,internalFixture,sum,dateValue,validURL,validate,align,materialUnits,convertAssumptions,opportunity};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.DOMAIN=api;
 })(typeof window!=='undefined'?window:globalThis);

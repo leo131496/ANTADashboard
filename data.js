@@ -42,32 +42,32 @@ window.DEMO={
       "pipeline": 6.2,
       "coverage": 2.3,
       "series": [
+        65,
+        70,
+        85,
+        90,
+        120,
         100,
-        106,
-        114,
-        117,
-        134,
-        122,
-        146,
+        130,
+        130,
+        165,
         145,
-        166,
-        153,
-        168,
+        165,
         190
       ],
       "industry": [
+        30,
+        35,
+        50,
+        55,
+        75,
+        60,
+        90,
+        80,
         100,
-        102,
-        108,
+        85,
         110,
-        119,
-        113,
-        126,
-        122,
-        133,
-        125,
-        138,
-        148
+        125
       ],
       "brands": [
         {
@@ -76,10 +76,7 @@ window.DEMO={
           "mark": "D",
           "momentum": "高",
           "potential": "高",
-          "segment": "高端户外 / 轻量保暖",
-          "tech": "待结合产品规格确认",
-          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
-          "signal": "高端户外品类增速领先，具备轻量保暖技术合作空间。",
+          "signal": "品牌动能高、当前渗透中，哪些产品系列具备可验证的新增应用空间？",
           "penetrationLevel": "中"
         },
         {
@@ -88,10 +85,7 @@ window.DEMO={
           "mark": "K",
           "momentum": "高",
           "potential": "高",
-          "segment": "专业户外 / 防风防护",
-          "tech": "待结合产品规格确认",
-          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
-          "signal": "品牌增长与当前技术渗透形成缺口，优先验证防护场景。",
+          "signal": "品牌动能高、当前渗透低，哪些SKU存在可验证的材料应用空白？",
           "penetrationLevel": "低"
         },
         {
@@ -100,10 +94,7 @@ window.DEMO={
           "mark": "A",
           "momentum": "中",
           "potential": "中",
-          "segment": "跑步训练 / 日常运动",
-          "tech": "待结合产品规格确认",
-          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
-          "signal": "主品牌体量较大，适合从重点系列开展技术应用试点。",
+          "signal": "品牌动能与当前渗透均为中，哪些品类应优先验证？",
           "penetrationLevel": "中"
         },
         {
@@ -112,10 +103,7 @@ window.DEMO={
           "mark": "F",
           "momentum": "中",
           "potential": "中",
-          "segment": "运动生活 / 城市户外",
-          "tech": "待结合产品规格确认",
-          "relation": "角色级关系覆盖见客户关系页；品牌级关系待提供",
-          "signal": "关注舒适与城市户外需求，先验证品牌合作意向。",
+          "signal": "品牌动能中、当前渗透低，哪些应用场景值得进一步确认？",
           "penetrationLevel": "低"
         }
       ],
@@ -136,41 +124,43 @@ window.DEMO={
       "risks": [
         [
           "竞争加剧",
-          "中层与保暖领域竞品投入增加。",
-          "高"
+          "中层与保暖领域竞争加剧。"
         ],
         [
           "价格敏感",
-          "主流运动系列对材料成本较为敏感。",
-          "中"
+          "部分主流细分市场对价格敏感。"
         ],
         [
           "供应波动",
-          "原材料与交期波动可能影响开发节奏。",
-          "中"
+          "原材料及供应链存在波动。"
         ],
         [
-          "消费变化",
-          "宏观不确定性影响非刚需消费。",
-          "中"
+          "宏观消费",
+          "宏观不确定性可能影响消费者支出。"
         ]
       ],
-      "healthLabel": "良好"
+      "healthLabel": "良好",
+      "trendBasis": {
+        "kind": "image_approximation",
+        "unit": "待客户确认",
+        "originalDataProvided": false,
+        "note": "按附件B图刻度和节点取约值重绘，非原始月度数据，不推算同比。"
+      }
     }
   },
   "materials": [
     {
       "name": "抓绒 / 中层",
       "en": "Fleece / Midlayer",
-      "state": "优势巩固",
+      "state": "优势地位",
       "level": "good",
       "pressure": "高",
       "next": "保持技术领先",
       "tech": "待产品技术团队确认"
     },
     {
-      "name": "轻量保暖",
-      "en": "Lightweight Insulation",
+      "name": "保暖",
+      "en": "Insulation",
       "state": "渗透不足",
       "level": "warn",
       "pressure": "高",
@@ -178,7 +168,7 @@ window.DEMO={
       "tech": "待产品技术团队确认"
     },
     {
-      "name": "防风 / 防护",
+      "name": "外壳 / 天气防护",
       "en": "Shell / Weather",
       "state": "渗透不足",
       "level": "warn",
