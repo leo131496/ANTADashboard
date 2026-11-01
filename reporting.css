@@ -1,0 +1,128 @@
+@media screen {
+  .section-letter:empty { display:none; }
+  .report-title-actions,.report-export-actions { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
+  .report-customer .customer-meta .meta-item { display:block; }
+  .report-customer .meta-item strong { font-variant-numeric:tabular-nums; }
+  .import-workflow { display:flex;gap:28px;align-items:center;padding:16px 20px;margin-bottom:18px;border:1px solid var(--line);border-radius:6px;background:#fff; }
+  .import-workflow>span { display:flex;gap:9px;align-items:center;color:#526f8b;font-size:12px; }
+  .import-workflow b { display:grid;place-items:center;width:23px;height:23px;border-radius:50%;font-size:11px;color:#1d63ad;background:#edf3fb; }
+  .import-options { display:flex;gap:25px;border:0;padding:0;margin:0 0 20px; }
+  .import-options legend { color:#3b5f80;font-size:12px;font-weight:600;margin-bottom:12px; }
+  .import-options label { display:block;font-size:12px;color:#3f6283;cursor:pointer; }
+  .import-options input { accent-color:var(--blue);vertical-align:middle;margin:0 7px 0 0; }
+  .import-options small { display:block;font-size:11px;line-height:1.7;color:#6b849c;margin:6px 0 0 23px; }
+  .report-ready { display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid #d3e7df;background:#eff8f3;border-radius:6px;margin-bottom:18px;padding:14px 18px;color:#227455; }
+  .report-ready>div { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
+  .report-ready strong { font-size:13px;font-weight:600; }
+  .report-ready span { font-size:11px;color:#53846f; }
+  .report-layout { display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px; }
+  .report-wide { grid-column:1/-1; }
+  .report-trend { padding:5px 14px 0; }
+  .report-trend svg { display:block;width:100%;height:auto;margin-top:15px; }
+  .report-trend text { font-size:11px;fill:#5f7b94;font-variant-numeric:tabular-nums; }
+  .report-layout .comparison-bar b small { margin-left:10px;font-size:10px;color:#6a849b;font-weight:400; }
+  .report-layout .comparison-bars { padding-top:5px; }
+  .report-coverage { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:4px 0 20px; }
+  .report-coverage>div { border-left:2px solid #d6e5f5;padding-left:13px; }
+  .report-coverage span { display:block;font-size:11px;color:#617f98; }
+  .report-coverage strong { display:block;font-size:24px;color:#1d5f9f;font-weight:650;font-variant-numeric:tabular-nums;margin-top:7px; }
+  .report-coverage strong small { font-size:11px;font-weight:400;color:#607f98; }
+  .report-notes { padding-left:18px;color:#5c7893;font-size:11px;line-height:1.9;margin:10px 0 16px; }
+  .report-notes li { padding-left:2px;margin-bottom:5px; }
+  .ai-state { display:flex;align-items:center;justify-content:space-between;gap:20px;background:#f0f4fb;border:1px solid #d8e3f3;border-radius:6px;padding:17px 20px;margin-bottom:18px; }
+  .ai-state>div { display:flex;align-items:center;gap:15px;color:#1f619e; }
+  .ai-state strong { font-size:14px;color:#2b5278; }
+  .ai-state p { font-size:11px;line-height:1.8;color:#617d97;margin:5px 0 0; }
+  .ai-state.is-live { background:#edf8f1;border-color:#cfe6d8; }
+  .analysis-summary { margin-bottom:16px; }
+  .analysis-summary .detail-card-body { padding-top:19px; }
+  .analysis-summary .detail-card-body>div { display:flex;align-items:baseline;gap:17px;flex-wrap:wrap; }
+  .analysis-brand { font-size:24px;color:var(--navy);font-weight:700;letter-spacing:-.3px; }
+  .analysis-summary p { margin:11px 0 0;color:#52738f; }
+  .brand-analysis-grid { display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start; }
+  .analysis-side { display:grid;gap:16px;min-width:0; }
+  .analysis-item { padding:13px 0 17px;border-bottom:1px solid #e6edf5; }
+  .analysis-item:first-child { padding-top:1px; }
+  .analysis-item:last-child { border-bottom:0;padding-bottom:0; }
+  .analysis-item h4 { font-size:13px;color:#305c84;margin:0 0 9px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-weight:600; }
+  .analysis-item p { font-size:12px;line-height:1.9;color:#5a7893;margin:0; }
+  .evidence-chips { display:inline-flex;gap:5px; }
+  .evidence-chips a { font-size:9px;line-height:1.5;color:#2868a6;background:#edf3fb;border:1px solid #dce7f5;border-radius:3px;padding:1px 5px; }
+  .evidence-chips a:hover { background:#daeafd; }
+  .evidence-register { margin-top:16px; }
+  .evidence-register tr:focus { outline:2px solid #77a4dc;outline-offset:-2px;background:#eff6ff; }
+  .evidence-register td:first-child { color:#235f9e;font-size:11px; }
+  body[data-page=reports] .data-table,body[data-page=brand-ai] .data-table { min-width:620px; }
+  body[data-page=brand-ai] .analysis-toolbar .analysis-filters select { min-width:155px; }
+}
+@media screen and (max-width:1150px) {
+  .report-customer { flex-wrap:wrap;gap:18px; }
+  .report-customer .customer-meta { width:100%;gap:22px; }
+  .report-customer .meta-item { padding-left:0;border:0; }
+  .brand-analysis-grid { grid-template-columns:1fr; }
+  .analysis-side { grid-template-columns:1fr 1fr;align-items:start; }
+}
+@media screen and (max-width:800px) {
+  .report-layout { grid-template-columns:1fr; }
+  .report-wide { grid-column:auto; }
+  .analysis-side { grid-template-columns:1fr; }
+  .import-options { flex-direction:column;gap:15px; }
+}
+@media screen and (max-width:680px) {
+  .report-title-actions { margin-top:13px;justify-content:space-between; }
+  .report-customer { gap:15px; }
+  .report-customer .customer-meta { display:flex;gap:14px;justify-content:space-between; }
+  .report-customer .meta-item span { font-size:9px; }
+  .report-customer .meta-item strong { font-size:10px; }
+  .report-customer .meta-item:last-child { display:none; }
+  .import-workflow { display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:15px; }
+  .import-workflow>span { font-size:11px; }
+  .import-options label { font-size:11px; }
+  .import-options small { font-size:10px; }
+  .report-ready { display:block;padding:13px 14px; }
+  .report-ready>div { gap:8px; }
+  .report-ready span { display:block;width:100%;padding-left:27px;line-height:1.8;font-size:10px; }
+  .report-ready>.text-button { margin-top:8px;margin-left:27px; }
+  .report-export-actions { margin-top:14px;gap:8px; }
+  .report-export-actions .quiet-button,.report-export-actions .primary-button { font-size:11px;padding:0 10px; }
+  .report-layout { gap:13px; }
+  .report-trend { padding:5px 7px 0; }
+  .report-trend text { font-size:18px; }
+  .report-coverage { grid-template-columns:1fr 1fr;gap:20px 10px; }
+  .report-coverage strong { font-size:23px; }
+  .report-notes { font-size:11px; }
+  .ai-state { display:block;padding:16px; }
+  .ai-state>div { gap:10px;align-items:flex-start; }
+  .ai-state strong { font-size:13px; }
+  .ai-state p { font-size:11px; }
+  .ai-state>.badge { margin:12px 0 0 34px; }
+  .analysis-brand { font-size:23px; }
+  .analysis-summary .detail-card-body { padding-top:16px; }
+  .brand-analysis-grid { gap:13px; }
+  .analysis-side { gap:13px; }
+  .analysis-item h4 { font-size:12px; }
+  .analysis-item p { font-size:12px;line-height:1.85; }
+  .evidence-register { margin-top:13px; }
+  body[data-page=brand-ai] .analysis-toolbar .analysis-filters select { min-width:0; }
+}
+@media screen and (max-width:400px) {
+  .breadcrumb { font-size:0;gap:0; }
+  .breadcrumb>span { display:none; }
+  .breadcrumb strong { font-size:11px; }
+}
+@media print {
+  .import-workflow,.import-options,.report-title-actions,.report-export-actions,.ai-state .badge { display:none; }
+  .report-layout,.brand-analysis-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+  .report-wide { grid-column:1/-1; }
+  .analysis-side { display:block; }
+  .analysis-side .card { margin-bottom:12px; }
+  .report-trend svg { width:100%;height:180px; }
+  .report-coverage { display:flex;justify-content:space-between; }
+  .report-ready,.ai-state,.analysis-summary { padding:12px;border:1px solid #dce6f1;margin-bottom:12px; }
+  .analysis-item { padding:8px 0; }
+  .analysis-item h4 { margin:0 0 5px;font-size:12px; }
+  .analysis-item p,.report-notes { font-size:11px;line-height:1.7; }
+  .analysis-brand { font-size:22px; }
+  .evidence-chips { font-size:9px; }
+  .evidence-register { margin-top:12px; }
+}

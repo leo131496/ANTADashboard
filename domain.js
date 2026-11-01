@@ -18,7 +18,7 @@
   function dateValue(value,monthly){let s=String(value??'').trim();if(/^\d{5}(?:\.\d+)?$/.test(s)){s=new Date((Number(s)-25569)*86400000).toISOString().slice(0,10);}s=s.replaceAll('/','-');const match=s.match(/^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?$/);if(!match)return null;const y=+match[1],m=+match[2],d=+(match[3]||1),date=new Date(Date.UTC(y,m-1,d));if(date.getUTCFullYear()!==y||date.getUTCMonth()!==m-1||date.getUTCDate()!==d)return null;return `${y}-${String(m).padStart(2,'0')}`+(monthly?'':'-'+String(d).padStart(2,'0'));}
   function number(v){if(String(v??'').trim()==='')return NaN;return Number(String(v).replaceAll(',',''));}
   function validURL(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password;}catch{return false;}}
-  function validate(type,grid,customer='anta'){
+  function validate(type,grid,customer='anta',options={}){
     if(!headers[type])throw Error('未知数据类型。');if(!grid.length)throw Error('文件为空。');if(grid.length>20001)throw Error('请将文件控制在20,000行以内。');
     const h=grid[0].map(norm),required=headers[type].filter(v=>type!=='external'||v!=='价格带');
     const missing=required.filter(v=>!h.includes(norm(v)));if(missing.length)throw Error('缺少表头：'+missing.join('、'));
@@ -30,9 +30,9 @@
       if(type==='intelligence')r={customer,date:dateValue(get('发布日期'),false),brand:get('品牌'),type:get('分类'),title:get('标题'),summary:get('摘要'),source:get('来源'),url:get('原文链接'),implication:get('经营启示'),origin:'import'};
       if(customer!=='anta')error='当前只配置安踏集团试点';else if(![...brands,...type==='intelligence'?['安踏集团']:[]].includes(r.brand))error='品牌不属于当前试点客户';
       else if(type==='intelligence'){
-        if(!r.date||!months.includes(r.date.slice(0,7)))error='发布日期不在报告周期内';else if(!newsTypes.includes(r.type))error='情报分类不匹配';else if(!r.title||!r.summary||!r.source||!r.implication)error='标题、摘要、来源和经营启示均须填写';else if(!validURL(r.url))error='原文链接须为不含账号密码的 HTTPS 地址';
+        if(!r.date||(!options.allowAnyPeriod&&!months.includes(r.date.slice(0,7))))error='发布日期无效或不在报告周期内';else if(!newsTypes.includes(r.type))error='情报分类不匹配';else if(!r.title||!r.summary||!r.source||!r.implication)error='标题、摘要、来源和经营启示均须填写';else if(!validURL(r.url))error='原文链接须为不含账号密码的 HTTPS 地址';
       }else{
-        if(!r.month||!months.includes(r.month))error='月份不在报告周期内或日期无效';else if(!categories.includes(r.category))error='品类需使用模板名称';
+        if(!r.month||(!options.allowAnyPeriod&&!months.includes(r.month)))error='月份不在报告周期内或日期无效';else if(!categories.includes(r.category))error='品类需使用模板名称';
         else if(type==='external'){
           if(!platforms.includes(r.platform))error='平台须分别填写天猫、淘宝、抖音、京东、快手或拼多多';else if(!bands.includes(r.priceBand))error='价格带不在模板范围内';else if([r.gmv,r.units,r.newSkus].some(v=>!Number.isFinite(v)||v<0))error='GMV、销量及上新数须为非负数字';else if(!Number.isInteger(r.units)||!Number.isInteger(r.newSkus))error='服装销量及上新数须为整数';else if(r.units===0&&r.gmv>0)error='销量为0但GMV大于0';
         }else if(!r.technology)error='材料技术不能为空';else if(!['米','码','千克'].includes(r.unit))error='材料单位须为米、码或千克';else if([r.units,r.amount].some(v=>!Number.isFinite(v)||v<0))error='材料销量及销售额须为非负数字';else if(r.units===0&&r.amount>0)error='材料销量为0但销售额大于0';
@@ -42,7 +42,7 @@
     });
     if(!valid.length&&!errors.length)throw Error('没有数据行。');return {rows:valid,errors};
   }
-  function align(external,internal,brand,category,technology){const ext=external.filter(r=>r.brand===brand&&r.category===category),all=internal.filter(r=>r.brand===brand&&r.category===category),ins=all.filter(r=>!technology||r.technology===technology),em=new Set(ext.map(r=>r.month)),im=new Set(ins.map(r=>r.month)),common=months.filter(m=>em.has(m)&&im.has(m));return {external:ext.filter(r=>common.includes(r.month)),internal:ins.filter(r=>common.includes(r.month)),months:common,missing:months.filter(m=>em.has(m)!==im.has(m))};}
+  function align(external,internal,brand,category,technology){const ext=external.filter(r=>r.brand===brand&&r.category===category),all=internal.filter(r=>r.brand===brand&&r.category===category),ins=all.filter(r=>!technology||r.technology===technology),em=new Set(ext.map(r=>r.month)),im=new Set(ins.map(r=>r.month)),observed=[...new Set([...em,...im])].sort(),common=observed.filter(m=>em.has(m)&&im.has(m));return {external:ext.filter(r=>common.includes(r.month)),internal:ins.filter(r=>common.includes(r.month)),months:common,missing:observed.filter(m=>em.has(m)!==im.has(m))};}
   function materialUnits(rows,unit){let total=0;const incompatible=[];rows.forEach(r=>{if(r.unit===unit)total+=r.units;else if(r.unit==='码'&&unit==='米')total+=r.units*.9144;else if(r.unit==='米'&&unit==='码')total+=r.units/.9144;else incompatible.push(r);});return {value:incompatible.length?null:total,incompatible};}
   function convertAssumptions(from,to,drivers){
     if(from===to)return {...drivers};
